@@ -6,7 +6,7 @@
 			if($_POST['password']!=""){
 				$username=$_POST['username'];
 				$password=md5($_POST['password']);
-				$res=pg_query($cnx,("Select * from usuario where username='$username' and password='$password'"));
+				$res=pg_query($cnx,("Select * from usuario where nomusu='$username' and senusu='$password'"));
 				if(pg_num_rows($res)>0){
 					$message_ok=true;
 					$user_list=pg_fetch_array($res);

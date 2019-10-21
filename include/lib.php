@@ -46,7 +46,7 @@
             }); } ); </script>");
       }  
       function grava($sql,$certo,$erro,$local){
-         $this->grv=pg_query($sql);
+         // $this->grv=pg_query($sql);
          if($this->grv){
              printf("<script> alert ('$certo'); document.location.href='$local'; </script>");
          }else{
@@ -180,7 +180,7 @@
          foreach(array_keys($this->campo) as $key){
             if(@$this->campo[$key]['maxlenght']){$maxlenght=" maxlenght=\"".$this->campo[$key]['maxlenght']."\" ";}else{$maxlenght='';}
             if($this->campo[$key]['type']=='text'){
-               echo("<div class=\"form-group\"><label for=\"$key\">".$this->campo[$key]['caption']."</label><input type=\"text\" class=\"form-control\" id=\"$key\" name=\"$key\" $maxlenght value=\"".$this->campo[$key]['value']."\" aria-describedby=\"H$key\"><small id=\"H$key\" class=\"form-text text-muted\">".$this->campo[$key]['obs']."</small></div>");
+               echo("<div class=\"form-group\"><label for=\"$key\">".$this->campo[$key]['caption']."</label><input type=\"text\" class=\"form-control\" id=\"$key\" name=\"$key\" $maxlenght value=\"".$this->campo[$key]['value']."\".".$this->campo[$key]['params']." aria-describedby=\"H$key\"><small id=\"H$key\" class=\"form-text text-muted\">".$this->campo[$key]['obs']."</small></div>");
 	         }elseif($this->campo[$key]['type']=='file'){
                echo("<div class=\"form-group\"><label for=\"$key\">".$this->campo[$key]['caption']."</label><input type=\"file\" class=\"form-control\" id=\"$key\" name=\"$key\" value=\"".$this->campo[$key]['value']."\" aria-describedby=\"H$key\"><small id=\"H$key\" class=\"form-text text-muted\">".$this->campo[$key]['obs']."</small></div>");
 	         }elseif($this->campo[$key]['type']=='select'){
@@ -191,7 +191,7 @@
                   echo("<option $sel value=\"".$this->campo[$key]['options'][$c]."\">".$this->campo[$key]['options'][$c]."</option>\n");
                }
                echo("</select>");
-               // echo("<small id=\"H$key\" class=\"form-text text-muted\">".$this->campo[$key]['obs']."</small></div>");
+               echo("<small id=\"H$key\" class=\"form-text text-muted\">".$this->campo[$key]['obs']."</small></div>");
 	         }elseif($this->campo[$key]['type']=='time'){
                echo("<div class=\"form-group\"><label for=\"$key\">".$this->campo[$key]['caption']."</label><input type=\"time\" class=\"form-control\" id=\"$key\" name=\"$key\" value=\"".$this->campo[$key]['value']."\" aria-describedby=\"H$key\"><small id=\"H$key\" class=\"form-text text-muted\">".$this->campo[$key]['obs']."</small></div>");
             }elseif($this->campo[$key]['type']=='date'){
@@ -226,4 +226,3 @@
          echo("</form>\n</div>\n");
       }
    }
-?>

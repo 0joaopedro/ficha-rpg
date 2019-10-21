@@ -46,11 +46,12 @@
             }); } ); </script>");
       }  
       function grava($sql,$certo,$erro,$local){
-         $this->grv=pg_query($sql);
+         // $this->grv=pg_query($sql);
          if($this->grv){
-             printf("<script> alert ('$certo'); document.location.href='$local'; </script>");
+            echo $local;
+            //  printf("<script> alert ('$certo'); document.location.href='$local'; </script>");
          }else{
-             printf("<script> alert ('$erro'); document.location.href='$local'; </script>");
+            //  printf("<script> alert ('$erro'); document.location.href='$local'; </script>");
          }
       }
    }
@@ -88,12 +89,12 @@
          $this->action=$action;
          $this->method=$method;
       }
-      function text($name='obj',$caption='Campo',$size=30,$maxlenght='',$obrig=''){
+      function text($name='obj',$caption='Campo',$size=30,$maxlength='',$obrig=''){
          $this->campo[$name]['type']='text';
          $this->campo[$name]['name']=$name;
          $this->campo[$name]['caption']=$caption;
          $this->campo[$name]['size']=$size;
-         $this->campo[$name]['maxlenght']=$maxlenght;
+         $this->campo[$name]['maxlength']=$maxlength;
          $this->campo[$name]['obrig']=$obrig;
       }
       function time($name='obj',$caption='Campo',$obrig=''){
@@ -113,12 +114,12 @@
          $this->campo[$name]['name']=$name;
          $this->campo[$name]['value']=$value;
       }
-      function password($name='obj',$caption='Senha',$size=30,$maxlenght='',$obrig=''){
+      function password($name='obj',$caption='Senha',$size=30,$maxlength='',$obrig=''){
          $this->campo[$name]['type']='password';
          $this->campo[$name]['name']=$name;
          $this->campo[$name]['caption']=$caption;
          $this->campo[$name]['size']=$size;
-         $this->campo[$name]['maxlenght']=$maxlenght;
+         $this->campo[$name]['maxlength']=$maxlength;
          $this->campo[$name]['obrig']=$obrig;
       }
       function select($name='obj',$caption='Selecione',$options=array('selecione'),$obrig=''){
@@ -178,9 +179,9 @@
          echo("<form name=\"$name\" action=\"".$this->action."\" method=\"".$this->method."\" enctype=\"multipart/form-data\">\n");
          echo("<div class=\"alert alert-success\" align=\"center\"><b>$this->titulo</b></div>\n");
          foreach(array_keys($this->campo) as $key){
-            if(@$this->campo[$key]['maxlenght']){$maxlenght=" maxlenght=\"".$this->campo[$key]['maxlenght']."\" ";}else{$maxlenght='';}
+            if(@$this->campo[$key]['maxlength']){$maxlength=" maxlength=\"".$this->campo[$key]['maxlength']."\" ";}else{$maxlength='';}
             if($this->campo[$key]['type']=='text'){
-               echo("<div class=\"form-group\"><label for=\"$key\">".$this->campo[$key]['caption']."</label><input type=\"text\" class=\"form-control\" id=\"$key\" name=\"$key\" $maxlenght value=\"".$this->campo[$key]['value']."\" aria-describedby=\"H$key\"><small id=\"H$key\" class=\"form-text text-muted\">".$this->campo[$key]['obs']."</small></div>");
+               echo("<div class=\"form-group\"><label for=\"$key\">".$this->campo[$key]['caption']."</label><input type=\"text\" class=\"form-control\" id=\"$key\" name=\"$key\" $maxlength value=\"".$this->campo[$key]['value']."\" aria-describedby=\"H$key\"><small id=\"H$key\" class=\"form-text text-muted\">".$this->campo[$key]['obs']."</small></div>");
 	         }elseif($this->campo[$key]['type']=='file'){
                echo("<div class=\"form-group\"><label for=\"$key\">".$this->campo[$key]['caption']."</label><input type=\"file\" class=\"form-control\" id=\"$key\" name=\"$key\" value=\"".$this->campo[$key]['value']."\" aria-describedby=\"H$key\"><small id=\"H$key\" class=\"form-text text-muted\">".$this->campo[$key]['obs']."</small></div>");
 	         }elseif($this->campo[$key]['type']=='select'){
@@ -195,7 +196,7 @@
 	         }elseif($this->campo[$key]['type']=='time'){
                echo("<div class=\"form-group\"><label for=\"$key\">".$this->campo[$key]['caption']."</label><input type=\"time\" class=\"form-control\" id=\"$key\" name=\"$key\" value=\"".$this->campo[$key]['value']."\" aria-describedby=\"H$key\"><small id=\"H$key\" class=\"form-text text-muted\">".$this->campo[$key]['obs']."</small></div>");
             }elseif($this->campo[$key]['type']=='date'){
-               echo("<div class=\"form-group\"><label for=\"$key\">".$this->campo[$key]['caption']."</label><input type=\"date\" class=\"form-control\" id=\"$key\" name=\"$key\" $maxlenght value=\"".$this->campo[$key]['value']."\" aria-describedby=\"H$key\"><small id=\"H$key\" class=\"form-text text-muted\">".$this->campo[$key]['obs']."</small></div>");
+               echo("<div class=\"form-group\"><label for=\"$key\">".$this->campo[$key]['caption']."</label><input type=\"date\" class=\"form-control\" id=\"$key\" name=\"$key\" $maxlength value=\"".$this->campo[$key]['value']."\" aria-describedby=\"H$key\"><small id=\"H$key\" class=\"form-text text-muted\">".$this->campo[$key]['obs']."</small></div>");
             }elseif($this->campo[$key]['type']=='dbselect'){
                echo("<div class=\"form-group\"><label for=\"$key\">".$this->campo[$key]['caption']."</label><select name=\"$key\" class=\"form-control\" id=\"$key\" aria-describedby=\"H$key\">");
                echo("<option value=''> Selecione</option>\n");

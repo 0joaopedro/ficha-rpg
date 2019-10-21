@@ -1,15 +1,11 @@
 <?php
 
-if (isset($_GET['controller']) ) {	
-	include_once('cnx.php');
-	session_start();
-	include_once('lib/helper.php');	
-	require_once('controllers/'.$_GET['controller'].".php");
-	// Fechar a conexão
-	pg_close($cnx);	
-	
-}else{
-	require_once('controllers/login.php');		
-}
-
-?>
+require("include/lib.php");
+head();
+$frm = new form('ACESSO AO SISTEMA', 'valida.php', 'post');
+$db = new banco();
+$db->consulta("select codusu,nomusu from usuario order by nomusu");
+$frm->dbselect('codusu', 'Usuário', $db->res, '*');
+$frm->password('senusu', 'Senha', 20, 20, '*');
+$frm->show('frm');
+foot();
