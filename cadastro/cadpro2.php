@@ -1,9 +1,3 @@
-
-
-
-
-
-
 <?php
    $db=new banco();
    $frm=new form('','principal.php?pag=cadpro2');

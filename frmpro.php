@@ -7,7 +7,7 @@
    head();
    $db=new banco(); 
    seguranca();
-   $frm=new form('Formulário de Produtos','grupos/grvpro.php','post');
+   $frm=new form('Formulário de Produtos','grvpro.php','post');
    $frm->hidden('codpro');
    $frm->text('despro','Nome do Produto',50,40,'*');
    $frm->text('qtdpro','Quantidade Estocada',50,20,'*');

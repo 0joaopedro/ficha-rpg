@@ -12,10 +12,12 @@
       require("cadastro/cadusu.php");
    }elseif($_GET['pag']=='cadpro'){
       require("cadastro/cadpro.php");
-   }elseif($_GET['pag']=='cadpro2'){
-      require("cadastro/cadpro2.php");
+   }elseif($_GET['pag']=='cadcla'){
+      require("cadcla.php");
    }elseif($_GET['pag']=='cadper'){
       require("cadastro/cadper.php");
+   }elseif($_GET['pag']=='cadrac'){
+      require("cadastro/cadrac.php");      
    }else{
       require("views/list_users.php");
    }
