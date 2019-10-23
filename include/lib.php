@@ -46,7 +46,7 @@
             }); } ); </script>");
       }  
       function grava($sql,$certo,$erro,$local){
-         // $this->grv=pg_query($sql);
+         $this->grv=pg_query($sql);
          if($this->grv){
              printf("<script> alert ('$certo'); document.location.href='$local'; </script>");
          }else{

@@ -18,7 +18,7 @@
          <ul>
             <li><a href='?pag=cadgru'>Grupos</a></li>
             <li><a href='?pag=cadpro'>Produtos</a></li>
-            <li><a href=''>Personagens</a></li>
+            <li><a href='principal.php'>Personagens</a></li>
             <li><a href='?pag=cadcla'>Classes</a></li>
             <li><a href='?pag=cadrac'>Raças</a>/</li>
          </ul>

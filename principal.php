@@ -17,9 +17,9 @@
    }elseif($_GET['pag']=='cadper'){
       require("cadastro/cadper.php");
    }elseif($_GET['pag']=='cadrac'){
-      require("cadastro/cadrac.php");      
+      require("cadrac.php");      
    }else{
-      require("views/list_users.php");
+      require("cadper.php");
    }
    foot();
 ?>
